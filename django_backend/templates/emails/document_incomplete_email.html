@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Documents Need Attention - Eduyata</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+        .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; }
+        .warning { background: #fff3cd; color: #856404; padding: 15px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #ffc107; }
+        .footer { text-align: center; margin-top: 30px; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📋 Documents Need Attention</h1>
+            <p>Action required for your teaching application</p>
+        </div>
+        <div class="content">
+            <p>Dear {{ teacher.name }},</p>
+            
+            <div class="warning">
+                <strong>Document Review Required:</strong> Some of your submitted documents need attention before we can proceed with your application.
+            </div>
+            
+            {% if reason %}
+            <p><strong>Specific Issues Found:</strong></p>
+            <p style="background: #fef2f2; padding: 15px; border-radius: 5px; border-left: 4px solid #ef4444;">{{ reason }}</p>
+            {% endif %}
+            
+            <p><strong>What you need to do:</strong></p>
+            <ul>
+                <li>Review the specific issues mentioned above</li>
+                <li>Prepare corrected/updated documents</li>
+                <li>Re-submit your application with the proper documents</li>
+                <li>Ensure all documents are clear and readable</li>
+            </ul>
+            
+            <p><strong>Common Issues:</strong></p>
+            <ul>
+                <li>Blurry or unclear document images</li>
+                <li>Missing required information</li>
+                <li>Documents not matching the required format</li>
+                <li>Incomplete or expired certificates</li>
+            </ul>
+            
+            <p>Please address these issues and resubmit your application. Our team is here to help if you have any questions.</p>
+            
+            <p>Best regards,<br>
+            <strong>Eduyata Admin Team</strong></p>
+        </div>
+        <div class="footer">
+            <p>© 2024 Eduyata. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

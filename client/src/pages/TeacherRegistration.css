@@ -1,0 +1,343 @@
+.teacher-registration {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.registration-container {
+  background: white;
+  border-radius: 20px;
+  padding: 50px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 900px;
+  position: relative;
+  overflow: hidden;
+}
+
+.registration-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.progress-bar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  gap: 20px;
+}
+
+.progress-step {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #e8ecf0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #a0a6b1;
+  transition: all 0.4s ease;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.progress-step.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+}
+
+.progress-step.active::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border: 2px solid #667eea;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+.step-content h3 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 40px;
+  font-size: 28px;
+  font-weight: 600;
+  position: relative;
+}
+
+.step-content h3::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 2px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #2c3e50;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.required {
+  color: #e74c3c;
+  font-size: 16px;
+  margin-left: 3px;
+}
+
+.step-content input,
+.step-content select,
+.step-content textarea {
+  width: 100%;
+  padding: 15px 18px;
+  border: 2px solid #e8ecf0;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: #fafbfc;
+  box-sizing: border-box;
+}
+
+.step-content input:focus,
+.step-content select:focus,
+.step-content textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  transform: translateY(-1px);
+}
+
+.step-content textarea {
+  resize: vertical;
+  font-family: inherit;
+}
+
+.step-content input::placeholder,
+.step-content textarea::placeholder {
+  color: #a0a6b1;
+  font-style: italic;
+}
+
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 12px 16px;
+  border: 2px solid #e8ecf0;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  background: #fafbfc;
+  position: relative;
+  font-weight: 500;
+}
+
+.checkbox-label:hover {
+  border-color: #667eea;
+  background: #f8f9ff;
+  transform: translateY(-1px);
+}
+
+.checkbox-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  width: 0;
+  height: 0;
+}
+
+.checkmark {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  margin-right: 12px;
+  transition: all 0.3s ease;
+}
+
+.checkbox-label input[type="checkbox"]:checked ~ .checkmark {
+  background: #667eea;
+  border-color: #667eea;
+}
+
+.checkbox-label input[type="checkbox"]:checked ~ .checkmark::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.checkbox-label input[type="checkbox"]:checked {
+  background: #667eea;
+}
+
+.checkbox-label:has(input:checked) {
+  border-color: #667eea;
+  background: #f8f9ff;
+  color: #667eea;
+}
+
+.file-upload-wrapper {
+  position: relative;
+  margin-top: 10px;
+}
+
+.file-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.file-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border: 2px dashed #d1d9e6;
+  border-radius: 12px;
+  background: #fafbfc;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  color: #667eea;
+  gap: 10px;
+}
+
+.file-label:hover {
+  border-color: #667eea;
+  background: #f8f9ff;
+  transform: translateY(-2px);
+}
+
+.file-icon {
+  font-size: 20px;
+}
+
+.form-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  gap: 20px;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 16px 32px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+  max-width: 200px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+  background: #f8f9fa;
+  color: #6c757d;
+  border: 2px solid #e9ecef;
+}
+
+.btn-secondary:hover {
+  background: #e9ecef;
+  border-color: #dee2e6;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .registration-container {
+    padding: 20px;
+    margin: 10px;
+  }
+  
+  .progress-bar {
+    gap: 10px;
+  }
+  
+  .progress-step {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+  
+  .step-content h3 {
+    font-size: 20px;
+  }
+  
+  .form-navigation {
+    flex-direction: column;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    max-width: none;
+  }
+}

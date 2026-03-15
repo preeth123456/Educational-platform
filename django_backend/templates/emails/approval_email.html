@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher Application Approved</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #22c55e, #16a34a); color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0; }
+        .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 8px 8px; }
+        .button { display: inline-block; background: #22c55e; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; margin: 20px 0; }
+        .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎉 Congratulations! Your Application is Approved!</h1>
+        </div>
+        <div class="content">
+            <h2>Dear {{ teacher.name }},</h2>
+            
+            <p>We are delighted to inform you that your teacher application for Eduyata has been <strong>approved</strong>!</p>
+            
+            {% if reason %}
+            <div style="background: #dcfce7; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #22c55e;">
+                <h3>📝 Admin Notes:</h3>
+                <p>{{ reason }}</p>
+            </div>
+            {% endif %}
+            
+            <p><strong>What's Next?</strong></p>
+            <ul>
+                <li>You can now access the teacher portal</li>
+                <li>Start creating and managing your courses</li>
+                <li>Connect with students and track their progress</li>
+                <li>Access teaching resources and tools</li>
+            </ul>
+            
+            <div style="background: #e0f2fe; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #0288d1;">
+                <h3>🔑 Your Login Credentials:</h3>
+                <p><strong>Email:</strong> {{ teacher.get_email }}</p>
+                <p><strong>Teacher ID:</strong> {{ teacher.teacher_id }}</p>
+                <p><em>Use your registered email and password to login</em></p>
+            </div>
+            
+            <a href="http://localhost:5173/teacher-login" class="button">Access Teacher Portal</a>
+            
+            <p><strong>Your Teaching Journey Begins Now!</strong></p>
+            <p>We're excited to have you as part of the Eduyata teaching community. Your expertise and dedication will help shape the future of education.</p>
+            
+            <p>If you have any questions or need assistance getting started, please don't hesitate to contact our support team.</p>
+            
+            <p>Welcome aboard!<br>
+            <strong>The Eduyata Team</strong></p>
+        </div>
+        <div class="footer">
+            <p>This is an automated message. Please do not reply to this email.</p>
+            <p>© 2024 Eduyata. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

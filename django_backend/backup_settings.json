@@ -1,0 +1,14 @@
+{
+  "daily_enabled": true,
+  "weekly_enabled": false,
+  "daily_time": "11:45",
+  "weekly_time": "18:28",
+  "weekly_day": "Sunday",
+  "retention_days": 14,
+  "retention_months": 12,
+  "storage_destinations": {
+    "local": true,
+    "cloud": false,
+    "external": false
+  }
+}

@@ -1,0 +1,1 @@
+UPDATE lessons SET course_id = 'COURSE0002' WHERE id = 3 AND course_id IS NULL;

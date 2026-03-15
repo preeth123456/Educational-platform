@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin - Students Management</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .btn { padding: 8px 16px; margin: 2px; border: none; cursor: pointer; }
+        .btn-danger { background-color: #dc3545; color: white; }
+        .btn-primary { background-color: #007bff; color: white; }
+        .login-form { max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ddd; }
+        .form-group { margin: 15px 0; }
+        input { width: 100%; padding: 8px; margin: 5px 0; }
+        .hidden { display: none; }
+        .alert { padding: 15px; margin: 10px 0; border-radius: 4px; }
+        .alert-success { background-color: #d4edda; color: #155724; }
+        .alert-error { background-color: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Login Form -->
+        <div id="loginForm" class="login-form">
+            <h2>Admin Login</h2>
+            <div class="form-group">
+                <input type="email" id="email" placeholder="Email" value="admin@eduyata.com">
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" placeholder="Password" value="admin123">
+            </div>
+            <button class="btn btn-primary" onclick="login()">Login</button>
+            <div id="loginMessage"></div>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div id="adminDashboard" class="hidden">
+            <h1>Students Management Dashboard</h1>
+            <div style="background: #f0f0f0; padding: 15px; margin: 10px 0; border-radius: 5px;">
+                <button class="btn btn-primary" onclick="loadStudents()" style="font-size: 16px; padding: 12px 20px;">🔄 Refresh Students</button>
+                <button class="btn btn-primary" onclick="exportStudentData()" style="font-size: 16px; padding: 12px 20px;">📊 Export Student Data</button>
+                <button class="btn btn-primary" onclick="createBackup()" style="font-size: 16px; padding: 12px 20px;">💾 Create Backup</button>
+                <button class="btn btn-danger" onclick="logout()" style="font-size: 16px; padding: 12px 20px;">🚪 Logout</button>
+            </div>
+            
+            <div id="message"></div>
+            <div id="studentCount" style="margin: 10px 0; font-weight: bold;"></div>
+            
+            <table id="studentsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email/Mobile</th>
+                        <th>Class</th>
+                        <th>Board</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="studentsBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let adminToken = localStorage.getItem('admin_token');
+
+        // Show appropriate section based on login status
+        if (adminToken) {
+            document.getElementById('loginForm').classList.add('hidden');
+            document.getElementById('adminDashboard').classList.remove('hidden');
+            loadStudents();
+        }
+
+        async function login() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                const response = await fetch('/api/admin/login/', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({email, password})
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    adminToken = result.token;
+                    localStorage.setItem('admin_token', adminToken);
+                    document.getElementById('loginForm').classList.add('hidden');
+                    document.getElementById('adminDashboard').classList.remove('hidden');
+                    loadStudents();
+                    showMessage('Login successful', 'success');
+                } else {
+                    document.getElementById('loginMessage').innerHTML = 
+                        `<div class="alert alert-error">${result.message}</div>`;
+                }
+            } catch (error) {
+                document.getElementById('loginMessage').innerHTML = 
+                    `<div class="alert alert-error">Login failed: ${error.message}</div>`;
+            }
+        }
+
+        async function loadStudents() {
+            try {
+                const response = await fetch('/api/admin/students/?page=1&page_size=50', {
+                    headers: {'Authorization': `Bearer ${adminToken}`}
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    displayStudents(result.students);
+                } else {
+                    showMessage('Failed to load students: ' + result.message, 'error');
+                }
+            } catch (error) {
+                showMessage('Network error: ' + error.message, 'error');
+            }
+        }
+
+        function displayStudents(students) {
+            const tbody = document.getElementById('studentsBody');
+            tbody.innerHTML = '';
+            
+            // Show student count
+            document.getElementById('studentCount').innerHTML = `Total Students: ${students.length}`;
+            
+            if (students.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #666;">No students found</td></tr>';
+                return;
+            }
+            
+            students.forEach(student => {
+                const row = `
+                    <tr>
+                        <td>${student.id}</td>
+                        <td>${student.name}</td>
+                        <td>${student.mobile_self || 'N/A'}</td>
+                        <td>${student.class || 'N/A'}</td>
+                        <td>${student.board || 'N/A'}</td>
+                        <td>
+                            <button class="btn btn-danger" onclick="deleteStudent(${student.id}, '${student.name}')">
+                                🗑️ Delete Student
+                            </button>
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+        }
+
+        function logout() {
+            localStorage.removeItem('admin_token');
+            location.reload();
+        }
+
+        async function deleteStudent(studentId, studentName) {
+            if (!confirm(`⚠️ HIGH RISK ACTION ⚠️\n\nAre you sure you want to DELETE student "${studentName}"?\n\nThis action:\n- Cannot be undone\n- Will be logged in audit trail\n- Removes all student data permanently\n\nType "DELETE" to confirm:`)) {
+                return;
+            }
+            
+            const confirmation = prompt('Type "DELETE" to confirm this high-risk action:');
+            if (confirmation !== 'DELETE') {
+                showMessage('Deletion cancelled', 'error');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/api/admin/students/${studentId}/delete/`, {
+                    method: 'POST',
+                    headers: {'Authorization': `Bearer ${adminToken}`}
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    showMessage(`✅ ${result.message} - Action logged in audit trail`, 'success');
+                    loadStudents(); // Refresh the list
+                } else {
+                    showMessage('Delete failed: ' + result.message, 'error');
+                }
+            } catch (error) {
+                showMessage('Network error: ' + error.message, 'error');
+            }
+        }
+
+        async function exportStudentData() {
+            try {
+                const response = await fetch('/api/admin/export/student-data/', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${adminToken}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        export_type: 'all_students',
+                        purpose: 'admin_panel_export'
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    showMessage(`✅ ${result.message} - Export logged in audit trail`, 'success');
+                } else {
+                    showMessage('Export failed: ' + result.message, 'error');
+                }
+            } catch (error) {
+                showMessage('Network error: ' + error.message, 'error');
+            }
+        }
+
+        async function createBackup() {
+            try {
+                const response = await fetch('/api/admin/backup/create/', {
+                    method: 'POST',
+                    headers: {'Authorization': `Bearer ${adminToken}`}
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    showMessage(`✅ ${result.message} - Backup logged in audit trail`, 'success');
+                } else {
+                    showMessage('Backup failed: ' + result.message, 'error');
+                }
+            } catch (error) {
+                showMessage('Network error: ' + error.message, 'error');
+            }
+        }
+
+        function showMessage(message, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
+            setTimeout(() => {
+                messageDiv.innerHTML = '';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

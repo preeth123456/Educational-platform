@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Test Page</title>
+</head>
+<body>
+    <h1>Admin Delete Test</h1>
+    
+    <div id="loginSection">
+        <h2>Step 1: Login</h2>
+        <button onclick="doLogin()" style="padding: 10px; background: blue; color: white;">LOGIN AS ADMIN</button>
+        <div id="loginResult"></div>
+    </div>
+    
+    <div id="testSection" style="display: none;">
+        <h2>Step 2: Test Actions</h2>
+        <button onclick="getStudents()" style="padding: 10px; background: green; color: white;">GET STUDENTS</button>
+        <button onclick="deleteFirstStudent()" style="padding: 10px; background: red; color: white;">DELETE FIRST STUDENT</button>
+        <button onclick="exportData()" style="padding: 10px; background: orange; color: white;">EXPORT DATA</button>
+        <button onclick="createBackup()" style="padding: 10px; background: purple; color: white;">CREATE BACKUP</button>
+        <div id="result"></div>
+        <div id="students"></div>
+    </div>
+
+    <script>
+        let token = '';
+        
+        async function doLogin() {
+            try {
+                const response = await fetch('/api/admin/login/', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        email: 'admin@eduyata.com',
+                        password: 'admin123'
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    token = result.token;
+                    document.getElementById('loginResult').innerHTML = '✅ LOGIN SUCCESS';
+                    document.getElementById('testSection').style.display = 'block';
+                } else {
+                    document.getElementById('loginResult').innerHTML = '❌ LOGIN FAILED: ' + result.message;
+                }
+            } catch (error) {
+                document.getElementById('loginResult').innerHTML = '❌ ERROR: ' + error.message;
+            }
+        }
+        
+        async function getStudents() {
+            try {
+                const response = await fetch('/api/admin/students/', {
+                    headers: {'Authorization': `Bearer ${token}`}
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    document.getElementById('students').innerHTML = 
+                        `<h3>Students Found: ${result.students.length}</h3>` +
+                        result.students.map(s => `<p>ID: ${s.id}, Name: ${s.name}</p>`).join('');
+                } else {
+                    document.getElementById('result').innerHTML = '❌ GET STUDENTS FAILED: ' + result.message;
+                }
+            } catch (error) {
+                document.getElementById('result').innerHTML = '❌ ERROR: ' + error.message;
+            }
+        }
+        
+        async function deleteFirstStudent() {
+            try {
+                // First get students to find first student ID
+                const studentsResponse = await fetch('/api/admin/students/', {
+                    headers: {'Authorization': `Bearer ${token}`}
+                });
+                
+                const studentsResult = await studentsResponse.json();
+                
+                if (studentsResult.students && studentsResult.students.length > 0) {
+                    const firstStudent = studentsResult.students[0];
+                    
+                    if (confirm(`DELETE STUDENT: ${firstStudent.name}?`)) {
+                        const deleteResponse = await fetch(`/api/admin/students/${firstStudent.id}/delete/`, {
+                            method: 'POST',
+                            headers: {'Authorization': `Bearer ${token}`}
+                        });
+                        
+                        const deleteResult = await deleteResponse.json();
+                        
+                        if (deleteResult.status === 'success') {
+                            document.getElementById('result').innerHTML = 
+                                `✅ DELETED: ${deleteResult.message}<br>🔍 CHECK DJANGO CONSOLE FOR AUDIT LOG!`;
+                        } else {
+                            document.getElementById('result').innerHTML = '❌ DELETE FAILED: ' + deleteResult.message;
+                        }
+                    }
+                } else {
+                    document.getElementById('result').innerHTML = '❌ NO STUDENTS FOUND TO DELETE';
+                }
+            } catch (error) {
+                document.getElementById('result').innerHTML = '❌ ERROR: ' + error.message;
+            }
+        }
+        
+        async function exportData() {
+            try {
+                const response = await fetch('/api/admin/export/student-data/', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        export_type: 'all_students',
+                        purpose: 'test_export'
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    document.getElementById('result').innerHTML = 
+                        `✅ EXPORT SUCCESS: ${result.message}<br>🔍 CHECK DJANGO CONSOLE FOR AUDIT LOG!`;
+                } else {
+                    document.getElementById('result').innerHTML = '❌ EXPORT FAILED: ' + result.message;
+                }
+            } catch (error) {
+                document.getElementById('result').innerHTML = '❌ ERROR: ' + error.message;
+            }
+        }
+        
+        async function createBackup() {
+            try {
+                const response = await fetch('/api/admin/backup/create/', {
+                    method: 'POST',
+                    headers: {'Authorization': `Bearer ${token}`}
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    document.getElementById('result').innerHTML = 
+                        `✅ BACKUP SUCCESS: ${result.message}<br>🔍 CHECK DJANGO CONSOLE FOR AUDIT LOG!`;
+                } else {
+                    document.getElementById('result').innerHTML = '❌ BACKUP FAILED: ' + result.message;
+                }
+            } catch (error) {
+                document.getElementById('result').innerHTML = '❌ ERROR: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>

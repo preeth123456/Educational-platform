@@ -1,0 +1,108 @@
+/* Admin Sidebar Styles */
+.admin-sidebar-container {
+  display: flex;
+  position: relative;
+  z-index: 9999;
+}
+
+/* Custom scrollbar for sidebar */
+.admin-sidebar-container ::-webkit-scrollbar {
+  width: 6px;
+}
+
+.admin-sidebar-container ::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.admin-sidebar-container ::-webkit-scrollbar-thumb {
+  background: rgba(107, 33, 168, 0.3);
+  border-radius: 3px;
+}
+
+.admin-sidebar-container ::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 33, 168, 0.5);
+}
+
+/* Sidebar animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.admin-sidebar-container .sidebar-link {
+  animation: slideIn 0.2s ease-out;
+}
+
+/* Hover effects */
+.admin-sidebar-container .sidebar-category {
+  transition: all 0.2s ease;
+}
+
+.admin-sidebar-container .sidebar-category:hover {
+  color: #9333ea;
+}
+
+/* Active link indicator */
+.admin-sidebar-container .active-link {
+  position: relative;
+}
+
+.admin-sidebar-container .active-link::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 20px;
+  background: #9333ea;
+  border-radius: 2px;
+}
+
+/* Tooltip for collapsed sidebar */
+.admin-sidebar-container .sidebar-tooltip {
+  position: absolute;
+  left: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #1a365d;
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 10000;
+}
+
+.admin-sidebar-container .sidebar-tooltip::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 4px solid transparent;
+  border-right-color: #1a365d;
+}
+
+.admin-sidebar-container .sidebar-link:hover .sidebar-tooltip {
+  opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .admin-sidebar-container {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    z-index: 9999;
+  }
+}

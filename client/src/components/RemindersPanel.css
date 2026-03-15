@@ -1,0 +1,193 @@
+.reminders-panel {
+  background: linear-gradient(135deg, #fff 0%, #f8fafc 100%);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.reminders-panel:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.reminders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.reminders-subtitle {
+  font-size: 0.75rem;
+  color: #8b5cf6;
+  background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.reminders-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reminders-header h3 svg {
+  color: #8b5cf6;
+}
+
+.add-reminder-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.add-reminder-btn:hover {
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.add-reminder-form {
+  background: #f8f9fa;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.add-reminder-form input,
+.add-reminder-form select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.save-btn {
+  background: #4285f4;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.cancel-btn {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.reminders-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.reminder-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #e2e8f0;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+  transition: all 0.2s ease;
+  border-left: 4px solid transparent;
+}
+
+.reminder-item:hover {
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-left-color: #667eea;
+  transform: translateX(4px);
+}
+
+.reminder-item:last-child {
+  border-bottom: none;
+}
+
+.reminder-content h4 {
+  margin: 0 0 4px 0;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.reminder-time {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.reminder-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.done-btn,
+.snooze-btn {
+  background: none;
+  border: none;
+  padding: 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.done-btn {
+  color: #10b981;
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  border-radius: 8px;
+}
+
+.done-btn:hover {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  color: #059669;
+  transform: scale(1.1);
+}
+
+.snooze-btn {
+  color: #f59e0b;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border-radius: 8px;
+}
+
+.snooze-btn:hover {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  color: #d97706;
+  transform: scale(1.1);
+}
+
+.no-reminders {
+  text-align: center;
+  color: #999;
+  padding: 20px;
+  font-size: 0.9rem;
+}

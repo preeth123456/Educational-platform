@@ -1,0 +1,455 @@
+/* Custom Color Palette - Lavender/Soft Theme */
+:root {
+    --primary-color: #7A5AF8; /* Deep Purple (for headings, icons, buttons, borders) */
+    --primary-light: #C3A6E6; /* LAVENDER (for read-only fields, interest tag background) */
+    --accent-color: #28a745; /* Green for Save/Success (Darker shade) */
+    --save-btn-bg: #D4EDDA;
+    --cancel-btn-bg: #F8D7DA;
+    --background-color: #f0f2f5;
+    --card-background: #ffffff;
+    --text-dark: #343a40;
+    --text-medium: #6c757d;
+    --text-light: #adb5bd;
+    --shadow-light: rgba(255, 255, 255, 0.7);
+    --shadow-dark: rgba(174, 174, 192, 0.4);
+    --error-color: #dc3545;
+
+    --notification-text-dark: #000000; /* FORCED BLACK TEXT */
+}
+
+/* --- Notification Panel Fixes (Maximized Priority for External Component) --- */
+
+.header-notifications-dropdown *,
+.notification-dropdown-panel *,
+.notification-item-highlight * {
+    color: var(--notification-text-dark) !important;
+    fill: var(--notification-text-dark) !important;
+}
+
+.notification-container {
+    z-index: 9999 !important;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.notification-item-highlight {
+    background-color: #FFF9C4;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin: 5px 0;
+    border-left: 5px solid #FFD700;
+}
+
+
+/* --- Profile and General Styles --- */
+.student-info-page {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+}
+
+.profile-card-container {
+    background-color: var(--card-background);
+    border-radius: 16px;
+    box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+    margin-bottom: 2rem;
+    overflow: hidden;
+    position: relative;
+    padding: 1.5rem;
+}
+
+.profile-header-visual {
+    background: var(--primary-light);
+    padding: 2.5rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+    border-radius: 12px;
+}
+
+.avatar-group {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.profile-image-large {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 5px solid rgba(255, 255, 255, 0.8);
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.image-edit-overlay {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: var(--primary-color);
+    color: white;
+    border: 3px solid white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s;
+}
+
+.profile-text {
+    flex-grow: 1;
+    text-shadow: none;
+}
+
+.profile-name {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.2;
+    color: var(--text-dark);
+}
+
+.profile-id-tag {
+    font-size: 1.1rem;
+    font-weight: 400;
+    opacity: 1;
+    margin-top: 0.5rem;
+    color: white !important;
+}
+
+.profile-action-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+.action-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    transition: all 0.2s;
+    box-shadow: 3px 3px 6px var(--shadow-dark), -3px -3px 6px var(--shadow-light);
+}
+
+.edit-btn {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    padding: 1.5rem 3.5rem;
+    font-size: 1.1rem;
+    box-shadow: 0 5px 15px rgba(122, 90, 248, 0.4);
+    white-space: nowrap;
+}
+
+.edit-btn svg {
+    color: white !important;
+    fill: currentColor;
+    font-size: 1.2em;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+}
+
+.edit-btn:hover {
+    background-color: #5d38b8 !important;
+    box-shadow: 0 3px 10px rgba(122, 90, 248, 0.6);
+}
+
+.save-btn {
+    background-color: var(--save-btn-bg);
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+}
+
+.save-btn:hover {
+    background-color: var(--accent-color);
+    color: white;
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(255, 255, 255, 0.2);
+}
+
+.cancel-btn {
+    background-color: var(--cancel-btn-bg);
+    color: var(--error-color);
+    border: 1px solid var(--error-color);
+}
+
+.cancel-btn:hover {
+    background-color: var(--error-color);
+    color: white;
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(255, 255, 255, 0.2);
+}
+
+.readonly-value {
+    background-color: var(--primary-light) !important;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--primary-light) !important;
+    font-weight: 600;
+    color: white !important;
+}
+
+.info-main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+@media (max-width: 900px) {
+    .info-main-grid {
+        grid-template-columns: 1fr;
+    }
+    .profile-header-visual {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+    }
+    .profile-action-buttons {
+        margin-top: 1rem;
+    }
+}
+
+.info-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.info-card {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+}
+
+.info-card-header {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--primary-light);
+    display: flex;
+    align-items: center;
+}
+
+.header-icon {
+    color: var(--primary-color);
+    margin-right: 0.75rem;
+    font-size: 1.3em;
+}
+
+.info-data-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.info-field-item.full-width {
+    grid-column: 1 / -1;
+}
+
+.info-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-medium);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-value {
+    margin: 0;
+    padding: 0.75rem 0;
+    font-size: 1rem;
+    color: var(--text-dark);
+    line-height: 1.4;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.placeholder-value {
+    color: var(--text-light);
+    font-style: italic;
+}
+
+.info-input {
+    width: 100%;
+    padding: 0.85rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: var(--background-color);
+    color: var(--text-dark);
+    transition: all 0.3s;
+    box-sizing: border-box;
+    box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+}
+
+.info-input:focus {
+    box-shadow: inset 1px 1px 3px var(--shadow-dark), inset -1px -1px 3px var(--shadow-light), 0 0 0 2px var(--primary-color);
+    outline: none;
+    background-color: white;
+}
+
+.info-input.textarea {
+    resize: vertical;
+}
+
+/* FIX: Interest card background REMOVED (set to card white background) */
+.interests-selection-area {
+    background-color: var(--card-background); /* Use the card's white background */
+    padding: 1rem; 
+    border-radius: 8px;
+    min-height: 50px;
+}
+
+.interests-grid-edit {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.interests-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding-top: 0.5rem;
+}
+
+.interest-tag, .interest-tag-display {
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    white-space: nowrap;
+    display: flex; 
+    align-items: center; 
+    gap: 0.4rem; 
+}
+
+/* FIX: Interest Tags (Buttons in Edit Mode) - Lavender BG, White Text/Icon */
+.interest-tag.selected {
+    background-color: var(--primary-light) !important; /* LAVENDER Background */
+    color: white !important; /* White Text */
+    border-color: var(--primary-light) !important;
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.3), inset -2px -2px 4px rgba(255, 255, 255, 0.1);
+}
+
+/* FIX: Interest Tags (Display Mode) - Lavender BG, White Text/Icon */
+.interest-tag-display {
+    background-color: var(--primary-light) !important; /* LAVENDER Background */
+    color: white !important; /* White Text */
+    border: 1px solid var(--primary-light) !important;
+    font-weight: 600;
+}
+
+.interest-tag:not(.selected):hover {
+    background-color: #e6e9ee;
+}
+
+.not-provided {
+    color: var(--text-light);
+    font-style: italic;
+    padding: 0.5rem 0;
+}
+
+/* Style for the heart icon within interest tags (both display and edit selected) */
+.interest-tag-display .heart-icon,
+.interest-tag.selected .heart-icon {
+    color: white; 
+    fill: white; 
+    font-size: 0.9em; 
+    flex-shrink: 0;
+}
+
+.notification-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.notification-message.success {
+    background-color: var(--accent-color);
+}
+
+.notification-message.error {
+    background-color: var(--error-color);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* Dark Theme Styles */
+.dark-theme .student-info-page {
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%) !important;
+}
+
+.dark-theme .profile-card-container,
+.dark-theme .info-card {
+    background-color: rgba(30, 27, 75, 0.8) !important;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    box-shadow: 0 8px 32px rgba(139, 92, 246, 0.15) !important;
+}
+
+.dark-theme .profile-header-visual {
+    background: rgba(139, 92, 246, 0.3) !important;
+}
+
+.dark-theme .profile-name,
+.dark-theme .info-card-header,
+.dark-theme .info-value {
+    color: #ffffff !important;
+}
+
+.dark-theme .info-label {
+    color: #e2e8f0 !important;
+}
+
+.dark-theme .info-input {
+    background-color: rgba(139, 92, 246, 0.1) !important;
+    border: 1px solid rgba(139, 92, 246, 0.3) !important;
+    color: #ffffff !important;
+}
+
+.dark-theme .info-input::placeholder {
+    color: #cbd5e1 !important;
+}
+
+.dark-theme .interests-selection-area {
+    background-color: rgba(139, 92, 246, 0.1) !important;
+}
+
+.dark-theme .placeholder-value {
+    color: #cbd5e1 !important;
+}

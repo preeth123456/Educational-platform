@@ -1,0 +1,29 @@
+# Python
+venv/
+*.pyc
+__pycache__/
+myvenv/
+venv/
+*.pyo
+*.pyd
+.Python
+db.sqlite3
+*.log
+
+# Node
+node_modules/
+dist/
+
+# OS
+.DS_Store
+
+# Build
+server/public
+*.tar.gz
+
+# IDE
+.vscode/
+.idea/
+
+# Environment
+.env

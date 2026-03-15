@@ -1,0 +1,636 @@
+/* Skill Badges Styles */
+.skill-badges-container {
+  padding: var(--spacing-6);
+  background: white;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  margin-bottom: var(--spacing-6);
+}
+
+.badges-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-6);
+  padding-bottom: var(--spacing-4);
+  border-bottom: 2px solid var(--gray-100);
+}
+
+.badges-title-section h2 {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  color: var(--gray-900);
+  margin-bottom: var(--spacing-2);
+}
+
+.badges-title-section p {
+  color: var(--gray-600);
+  margin: 0;
+}
+
+.badges-stats {
+  display: flex;
+  gap: var(--spacing-4);
+}
+
+.stat-item {
+  text-align: center;
+  padding: var(--spacing-3);
+  background: linear-gradient(135deg, var(--primary-50), var(--primary-100));
+  border-radius: var(--radius-lg);
+  min-width: 80px;
+}
+
+.stat-value {
+  display: block;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--primary-600);
+}
+
+.stat-label {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--gray-600);
+  margin-top: var(--spacing-1);
+}
+
+/* Tabs */
+.badges-tabs {
+  display: flex;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-6);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.tab-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-4);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--gray-600);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.tab-button:hover {
+  color: var(--primary-600);
+  background: var(--primary-50);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.tab-button.active {
+  color: var(--primary-600);
+  border-bottom-color: var(--primary-600);
+  background: var(--primary-50);
+}
+
+/* Badge Grid */
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--spacing-8);
+  margin-bottom: var(--spacing-6);
+  justify-items: center;
+  padding: var(--spacing-4);
+}
+
+.badge-card {
+  position: relative;
+  background: white;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  overflow: hidden;
+  border: 4px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), inset 0 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.badge-card:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), inset 0 2px 4px rgba(255, 255, 255, 0.9);
+}
+
+.badge-card.earned {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%);
+  border-color: #0ea5e9;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.9);
+}
+
+.badge-card.earned:hover {
+  border-color: #0284c7;
+  box-shadow: 0 8px 25px rgba(14, 165, 233, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.95);
+}
+
+.badge-card.available {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+  border-color: #94a3b8;
+  opacity: 0.7;
+}
+
+.badge-icon-large {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-1);
+  display: flex;
+  justify-content: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.badge-icon-large.locked {
+  color: var(--gray-400);
+  filter: grayscale(100%);
+  opacity: 0.6;
+}
+
+.badge-content {
+  text-align: center;
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+}
+
+.badge-name {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  color: var(--gray-800);
+  margin-bottom: var(--spacing-1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+.badge-description {
+  display: none;
+}
+
+.badge-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-size-sm);
+}
+
+.badge-points {
+  background: var(--primary-100);
+  color: var(--primary-700);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+}
+
+.badge-earned-date {
+  color: var(--gray-500);
+}
+
+.badge-difficulty {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* Share Button */
+.share-badge-btn {
+  position: absolute;
+  top: var(--spacing-3);
+  right: var(--spacing-3);
+  background: var(--primary-500);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: all var(--transition-normal);
+}
+
+.badge-card:hover .share-badge-btn {
+  opacity: 1;
+}
+
+.share-badge-btn:hover {
+  background: var(--primary-600);
+  transform: scale(1.1);
+}
+
+/* Lock Overlay */
+.badge-lock-overlay {
+  position: absolute;
+  top: var(--spacing-3);
+  right: var(--spacing-3);
+  background: var(--gray-400);
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xs);
+}
+
+/* Difficulty Sections */
+.difficulty-section {
+  margin-bottom: var(--spacing-8);
+}
+
+.difficulty-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-4);
+  padding-bottom: var(--spacing-2);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.difficulty-header h3 {
+  color: var(--gray-800);
+  margin: 0;
+}
+
+.badge-count {
+  background: var(--gray-100);
+  color: var(--gray-600);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+}
+
+/* No Badges Message */
+.no-badges-message {
+  text-align: center;
+  padding: var(--spacing-12) var(--spacing-6);
+  color: var(--gray-500);
+}
+
+.no-badges-icon {
+  font-size: 4rem;
+  margin-bottom: var(--spacing-4);
+  color: var(--gray-300);
+}
+
+.no-badges-message h3 {
+  color: var(--gray-600);
+  margin-bottom: var(--spacing-2);
+}
+
+/* Badge Modal */
+.badge-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--spacing-4);
+}
+
+.badge-modal {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-6);
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.badge-modal-header {
+  display: flex;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-4);
+}
+
+.badge-modal-icon {
+  font-size: 4rem;
+  flex-shrink: 0;
+}
+
+.badge-modal-info h3 {
+  margin: 0 0 var(--spacing-2) 0;
+  color: var(--gray-900);
+}
+
+.badge-modal-info p {
+  color: var(--gray-600);
+  margin: 0 0 var(--spacing-3) 0;
+}
+
+.badge-modal-meta {
+  display: flex;
+  gap: var(--spacing-3);
+}
+
+.modal-close {
+  position: absolute;
+  top: var(--spacing-4);
+  right: var(--spacing-4);
+  background: none;
+  border: none;
+  font-size: var(--font-size-xl);
+  color: var(--gray-400);
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.modal-close:hover {
+  background: var(--gray-100);
+  color: var(--gray-600);
+}
+
+.badge-modal-earned {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  background: var(--success-50);
+  color: var(--success-700);
+  padding: var(--spacing-3);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-4);
+}
+
+.badge-modal-actions {
+  text-align: center;
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  background: var(--primary-500);
+  color: white;
+  border: none;
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.share-btn:hover {
+  background: var(--primary-600);
+  transform: translateY(-1px);
+}
+
+.badge-requirements {
+  background: var(--gray-50);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-lg);
+  text-align: left;
+}
+
+.badge-requirements h4 {
+  margin: 0 0 var(--spacing-2) 0;
+  color: var(--gray-800);
+}
+
+/* Compact View */
+.badges-compact {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4);
+  box-shadow: var(--shadow-md);
+}
+
+.badges-header-compact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-3);
+}
+
+.badges-title {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.badges-title h3 {
+  margin: 0;
+  color: var(--gray-800);
+  font-size: var(--font-size-lg);
+}
+
+.badges-summary {
+  display: flex;
+  gap: var(--spacing-3);
+  font-size: var(--font-size-sm);
+}
+
+.badge-count {
+  background: var(--primary-100);
+  color: var(--primary-700);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+}
+
+.badge-points {
+  color: var(--gray-600);
+  font-weight: 500;
+}
+
+.recent-badges {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.badge-item-compact {
+  display: flex !important;
+  align-items: center !important;
+  gap: var(--spacing-2) !important;
+  padding: var(--spacing-3) var(--spacing-4) !important;
+  background: white !important;
+  border-radius: 50px !important;
+  position: relative !important;
+  border: 2px solid #e2e8f0 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  margin-bottom: var(--spacing-2) !important;
+}
+
+.badge-item-compact.earned {
+  border-color: #10b981 !important;
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5) !important;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2) !important;
+}
+
+.badge-item-compact.available {
+  border-color: #94a3b8 !important;
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0) !important;
+  opacity: 0.8 !important;
+}
+
+.badge-icon-compact {
+  font-size: 1.2rem !important;
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: white !important;
+  border-radius: 50% !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+  flex-shrink: 0 !important;
+}
+
+.badge-info-compact {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+}
+
+.badge-name-compact {
+  font-weight: 700 !important;
+  color: var(--gray-800) !important;
+  font-size: var(--font-size-base) !important;
+  margin-bottom: 2px !important;
+}
+
+.badge-difficulty-compact {
+  font-size: var(--font-size-xs) !important;
+  color: var(--gray-600) !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.5px !important;
+}
+
+.available-badges-header {
+  font-size: var(--font-size-xs);
+  color: var(--gray-600);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-2);
+  padding-left: var(--spacing-2);
+}
+
+.badge-lock-icon {
+  position: absolute;
+  right: var(--spacing-2);
+  color: var(--gray-400);
+  font-size: var(--font-size-xs);
+}
+
+.no-badges-compact {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  color: var(--gray-500);
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-3);
+  text-align: center;
+  justify-content: center;
+}
+
+/* Loading */
+.badges-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-12);
+  color: var(--gray-500);
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--gray-200);
+  border-top: 3px solid var(--primary-500);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: var(--spacing-3);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Dark Theme */
+.dark-theme .skill-badges-container {
+  background: rgba(30, 27, 75, 0.8);
+  border-color: rgba(139, 92, 246, 0.2);
+}
+
+.dark-theme .badges-title-section h2 {
+  color: #ffffff;
+}
+
+.dark-theme .badges-title-section p {
+  color: #e2e8f0;
+}
+
+.dark-theme .badge-card {
+  background: rgba(30, 27, 75, 0.6);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.dark-theme .badge-name {
+  color: #ffffff;
+}
+
+.dark-theme .badge-description {
+  color: #e2e8f0;
+}
+
+.dark-theme .badge-modal {
+  background: rgba(30, 27, 75, 0.95);
+}
+
+.dark-theme .badges-compact {
+  background: rgba(30, 27, 75, 0.8);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .badges-header {
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+  
+  .badges-stats {
+    width: 100%;
+    justify-content: space-around;
+  }
+  
+  .badges-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .badge-modal {
+    margin: var(--spacing-4);
+    max-width: none;
+  }
+  
+  .badge-modal-header {
+    flex-direction: column;
+    text-align: center;
+  }
+}

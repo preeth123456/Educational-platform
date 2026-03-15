@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher Application Status Update</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #ef4444, #dc2626); color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0; }
+        .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 8px 8px; }
+        .button { display: inline-block; background: #3b82f6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; margin: 20px 0; }
+        .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📋 Application Status Update</h1>
+        </div>
+        <div class="content">
+            <h2>Dear {{ teacher.name }},</h2>
+            
+            <p>Thank you for your interest in joining Eduyata as a teacher. After careful review of your application, we regret to inform you that we cannot proceed with your application at this time.</p>
+            
+            {% if reason %}
+            <div style="background: #fee2e2; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #ef4444;">
+                <h3>📝 Feedback:</h3>
+                <p>{{ reason }}</p>
+            </div>
+            {% endif %}
+            
+            <p><strong>This is not the end!</strong></p>
+            <p>We encourage you to:</p>
+            <ul>
+                <li>Review the feedback provided above</li>
+                <li>Consider additional training or certifications</li>
+                <li>Reapply in the future when you meet our requirements</li>
+                <li>Stay connected with our educational community</li>
+            </ul>
+            
+            <p>We appreciate the time and effort you put into your application. While we cannot offer you a position at this time, we recognize your passion for education.</p>
+            
+            <a href="http://localhost:5173/teacher-registration" class="button">Apply Again in Future</a>
+            
+            <p>If you have any questions about this decision or would like guidance on how to strengthen your application for the future, please feel free to contact our support team.</p>
+            
+            <p>Thank you for your understanding.<br>
+            <strong>The Eduyata Team</strong></p>
+        </div>
+        <div class="footer">
+            <p>This is an automated message. Please do not reply to this email.</p>
+            <p>© 2024 Eduyata. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

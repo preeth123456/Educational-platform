@@ -1,0 +1,255 @@
+.teacher-profile-container {
+  padding-top: 80px;
+}
+
+.teacher-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #6C63FF;
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+
+.teacher-profile-section {
+  padding: 1.5rem;
+}
+
+.teacher-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.personal-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.info-item-start {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.info-icon {
+  color: #6b7280;
+}
+
+.qualification-icon {
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+.bio-title {
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #374151;
+}
+
+.bio-text {
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.teaching-info-title {
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.subjects-title {
+  margin-bottom: 0.5rem;
+  color: #374151;
+}
+
+.subjects-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.subject-tag {
+  background: #f3e8ff;
+  color: #7c3aed;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.courses-title {
+  margin-bottom: 0.75rem;
+  color: #374151;
+}
+
+.courses-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.course-item {
+  background: #f9fafb;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.course-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.course-title {
+  font-weight: 500;
+  color: #111827;
+}
+
+.course-students {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.course-icon {
+  color: #6b7280;
+}
+
+.profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 0.75rem;
+}
+
+.teacher-name {
+  margin: 0;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.block-btn {
+  background: #f59e0b;
+  color: white;
+}
+
+.unblock-btn {
+  background: #10b981;
+  color: white;
+}
+
+/* Video Section Styles */
+.video-section {
+  margin-top: 1.25rem;
+}
+
+.video-title {
+  margin-bottom: 1rem;
+  color: #374151;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.video-container {
+  background: #f9fafb;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.video-description {
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.video-player-wrapper {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.video-player {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.youtube-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #6C63FF;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  background: #fff;
+  border: 2px solid #6C63FF;
+  border-radius: 6px;
+  transition: all 0.2s;
+  margin-top: 1rem;
+}
+
+.youtube-link:hover {
+  background: #6C63FF;
+  color: white;
+}
+
+.video-actions {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.approve-btn {
+  background: #10b981;
+  color: white;
+}
+
+.reject-btn {
+  background: #ef4444;
+  color: white;
+}
+
+.approve-btn:hover {
+  background: #059669;
+}
+
+.reject-btn:hover {
+  background: #dc2626;
+}
+
+.block-btn:hover {
+  background: #d97706;
+}
+
+.unblock-btn:hover {
+  background: #047857;
+}

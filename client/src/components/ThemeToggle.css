@@ -1,0 +1,76 @@
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: var(--card-bg, #ffffff);
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color, #e1e5e9);
+}
+
+.theme-options {
+  display: flex;
+  gap: 4px;
+}
+
+.theme-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-secondary, #6b7280);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 16px;
+}
+
+.theme-btn:hover {
+  background: var(--hover-bg, #f3f4f6);
+  color: var(--text-primary, #1f2937);
+}
+
+.theme-btn.active {
+  background: var(--primary-color, #3b82f6);
+  color: white;
+}
+
+/* Dark theme styles */
+.dark-theme .theme-toggle {
+  background: var(--card-bg, #1f2937);
+  border-color: var(--border-color, #374151);
+}
+
+.dark-theme .theme-btn {
+  color: var(--text-secondary, #9ca3af);
+}
+
+.dark-theme .theme-btn:hover {
+  background: var(--hover-bg, #374151);
+  color: var(--text-primary, #f9fafb);
+}
+
+.dark-theme .theme-btn.active {
+  background: var(--primary-color, #3b82f6);
+  color: white;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .theme-toggle {
+    top: 10px;
+    right: 10px;
+    padding: 6px;
+  }
+  
+  .theme-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+}

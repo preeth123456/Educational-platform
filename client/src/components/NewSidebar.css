@@ -1,0 +1,76 @@
+/* New Sidebar Styles - Override any conflicting styles */
+.new-sidebar-container {
+  position: fixed !important;
+  top: 80px !important;
+  left: 0 !important;
+  z-index: 9999 !important;
+  background-color: #d8b4f8 !important;
+  border: none !important;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.1) !important;
+}
+
+/* Scrollable sidebar content */
+.scrollable-sidebar {
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important; /* Internet Explorer 10+ */
+}
+
+.scrollable-sidebar::-webkit-scrollbar {
+  display: none !important; /* WebKit */
+}
+
+/* Hide any old sidebar that might be showing */
+.dashboard-sidebar {
+  display: none !important;
+}
+
+/* Ensure main content adjusts properly */
+.dashboard-main {
+  transition: margin-left 0.3s ease !important;
+}
+
+/* Dark Theme Styles */
+.dark-theme .new-sidebar-container {
+  background-color: rgba(30, 27, 75, 0.95) !important;
+  border-right: 1px solid rgba(139, 92, 246, 0.3) !important;
+}
+
+.dark-theme .sidebar-nav-item {
+  color: #ffffff !important;
+}
+
+.dark-theme .sidebar-nav-item:hover {
+  background-color: rgba(139, 92, 246, 0.2) !important;
+}
+
+.dark-theme .sidebar-nav-item.active {
+  background-color: rgba(139, 92, 246, 0.4) !important;
+  color: #ffffff !important;
+}
+
+.dark-theme .sidebar-brand,
+.dark-theme .sidebar-text {
+  color: #ffffff !important;
+}
+
+.dark-theme .new-sidebar-container div[style*="backgroundColor: rgb(216, 180, 248)"],
+.dark-theme .new-sidebar-container div[style*="backgroundColor:#d8b4f8"],
+.dark-theme .new-sidebar-container div[style*="background-color: #d8b4f8"] {
+  background-color: rgba(30, 27, 75, 0.95) !important;
+}
+
+.dark-theme .new-sidebar-container > div > div {
+  background-color: rgba(30, 27, 75, 0.95) !important;
+}
+
+.dark-theme .new-sidebar-container a {
+  color: #ffffff !important;
+}
+
+.dark-theme .new-sidebar-container a:hover {
+  background-color: rgba(139, 92, 246, 0.3) !important;
+}
+
+.dark-theme .new-sidebar-container a[style*="backgroundColor: rgb(192, 132, 252)"] {
+  background-color: rgba(139, 92, 246, 0.6) !important;
+} 

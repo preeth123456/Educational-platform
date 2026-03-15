@@ -1,0 +1,1 @@
+CREATE DATABASE aiedupro_db;

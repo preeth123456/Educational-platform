@@ -1,0 +1,300 @@
+/* Performance Detail Page Styles */
+.performance-detail {
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --warning-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  --danger-gradient: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
+}
+ 
+/* Ensure content is visible after header */
+.performance-detail-content {
+  padding-top: 2rem;
+  position: relative;
+  z-index: 1;
+}
+ 
+/* Animated progress bars */
+.progress-bar {
+  position: relative;
+  overflow: hidden;
+}
+ 
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shimmer 2s infinite;
+}
+ 
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+ 
+/* Hover effects for cards */
+.performance-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+ 
+.performance-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+ 
+/* Tab animation */
+.tab-content {
+  animation: fadeInUp 0.5s ease-out;
+}
+ 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+ 
+/* Score circle animation */
+.score-circle {
+  animation: scaleIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+ 
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+ 
+/* Badge animations */
+.badge {
+  animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+ 
+@keyframes bounceIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+ 
+/* Trend line animation */
+.trend-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawLine 2s ease-out forwards;
+}
+ 
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+ 
+/* Responsive design improvements */
+@media (max-width: 768px) {
+  .performance-detail-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+ 
+  .tab-navigation {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+ 
+  .tab-button {
+    flex: 1;
+    min-width: 120px;
+  }
+}
+ 
+/* Custom scrollbar */
+.performance-detail::-webkit-scrollbar {
+  width: 8px;
+}
+ 
+.performance-detail::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+ 
+.performance-detail::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 4px;
+}
+ 
+.performance-detail::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #5a67d8, #6b46c1);
+}
+ 
+/* Loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+ 
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+ 
+/* Tooltip styles */
+.tooltip {
+  position: relative;
+}
+ 
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.8);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+ 
+.tooltip:hover::after {
+  opacity: 1;
+}
+ 
+/* Print styles */
+@media print {
+  .performance-detail {
+    background: white !important;
+  }
+ 
+  .tab-navigation {
+    display: none;
+  }
+ 
+  .performance-card {
+    box-shadow: none !important;
+    border: 1px solid #ddd;
+  }
+}
+ 
+/* Dark Theme Styles */
+.dark-theme .bg-gradient-to-br {
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%) !important;
+}
+ 
+.dark-theme .bg-white {
+  background-color: rgba(30, 27, 75, 0.95) !important;
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  backdrop-filter: blur(10px);
+}
+ 
+.dark-theme .rounded-2xl {
+  background-color: rgba(30, 27, 75, 0.95) !important;
+  border: 1px solid rgba(139, 92, 246, 0.4) !important;
+  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.15) !important;
+}
+ 
+.dark-theme .text-gray-800,
+.dark-theme .text-gray-900 {
+  color: #ffffff !important;
+}
+ 
+.dark-theme .text-gray-600,
+.dark-theme .text-gray-700 {
+  color: #e2e8f0 !important;
+}
+ 
+.dark-theme .shadow-sm,
+.dark-theme .shadow-xl,
+.dark-theme .shadow-2xl {
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2) !important;
+}
+ 
+.dark-theme .border-b {
+  border-color: rgba(139, 92, 246, 0.2) !important;
+}
+ 
+.dark-theme .bg-gradient-to-br.from-gray-50 {
+  background: rgba(139, 92, 246, 0.1) !important;
+}
+ 
+.dark-theme .bg-blue-50,
+.dark-theme .bg-green-50,
+.dark-theme .bg-purple-50 {
+  background-color: rgba(139, 92, 246, 0.1) !important;
+}
+ 
+.dark-theme .hover\:shadow-lg:hover,
+.dark-theme .hover\:shadow-2xl:hover {
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3) !important;
+}
+ 
+.dark-theme .hover\:bg-purple-50:hover {
+  background-color: rgba(139, 92, 246, 0.2) !important;
+}
+ 
+.dark-theme .performance-card:hover {
+  background-color: rgba(30, 27, 75, 0.9) !important;
+}
+ 
+.dark-theme .from-purple-50 {
+  background: rgba(139, 92, 246, 0.2) !important;
+}
+ 
+.dark-theme .border-purple-500 {
+  border-color: rgba(139, 92, 246, 0.6) !important;
+}
+ 
+.dark-theme .border-l-4 {
+  border-left-color: rgba(139, 92, 246, 0.8) !important;
+}
+ 
+.dark-theme .from-green-50,
+.dark-theme .from-blue-50,
+.dark-theme .from-purple-50 {
+  background: rgba(139, 92, 246, 0.15) !important;
+}
+ 
+.dark-theme .to-emerald-50,
+.dark-theme .to-cyan-50,
+.dark-theme .to-pink-50 {
+  background: rgba(139, 92, 246, 0.25) !important;
+}
+ 
+.dark-theme .bg-gradient-to-br {
+  background: rgba(139, 92, 246, 0.2) !important;
+}
+ 
+.dark-theme .rounded-xl {
+  background-color: rgba(139, 92, 246, 0.1) !important;
+  border: 1px solid rgba(139, 92, 246, 0.3) !important;
+}    
+ 

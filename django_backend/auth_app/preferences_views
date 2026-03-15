@@ -1,0 +1,112 @@
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+from django.views.decorators.csrf import csrf_exempt
+from .models import Student, UserPreferences
+import json
+
+@api_view(['GET'])
+def get_user_preferences(request):
+    """Get user preferences for settings"""
+    try:
+        student_id = request.GET.get('student_id')
+        if not student_id:
+            return Response({
+                'status': 'error',
+                'message': 'Student ID is required'
+            }, status=status.HTTP_400_BAD_REQUEST)
+            
+        try:
+            preferences = UserPreferences.objects.get(student_id=student_id)
+        except UserPreferences.DoesNotExist:
+            # Create default preferences if they don't exist
+            student = Student.objects.get(id=student_id)
+            preferences = UserPreferences.objects.create(student=student)
+        
+        return Response({
+            'status': 'success',
+            'data': {
+                'email_notifications': preferences.email_notifications,
+                'push_notifications': preferences.push_notifications,
+                'assignment_reminders': preferences.assignment_reminders,
+                'course_updates': preferences.course_updates,
+                'achievement_alerts': preferences.achievement_alerts,
+                'theme': preferences.theme,
+                'language': preferences.language,
+                'timezone': preferences.timezone,
+                'dashboard_layout': preferences.dashboard_layout
+            }
+        })
+    except Student.DoesNotExist:
+        return Response({
+            'status': 'error',
+            'message': 'Student not found'
+        }, status=status.HTTP_404_NOT_FOUND)
+    except Exception as e:
+        return Response({
+            'status': 'error',
+            'message': str(e)
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@csrf_exempt
+@api_view(['POST'])
+def update_user_preferences(request):
+    """Update user preferences"""
+    try:
+        if request.content_type == 'application/json':
+            data = json.loads(request.body)
+        else:
+            data = request.data
+            
+        student_id = data.get('student_id')
+        if not student_id:
+            return Response({
+                'status': 'error',
+                'message': 'Student ID is required'
+            }, status=status.HTTP_400_BAD_REQUEST)
+            
+        try:
+            preferences = UserPreferences.objects.get(student_id=student_id)
+        except UserPreferences.DoesNotExist:
+            student = Student.objects.get(id=student_id)
+            preferences = UserPreferences.objects.create(student=student)
+        
+        # Update notification settings
+        if 'email_notifications' in data:
+            preferences.email_notifications = data['email_notifications']
+        if 'push_notifications' in data:
+            preferences.push_notifications = data['push_notifications']
+        if 'assignment_reminders' in data:
+            preferences.assignment_reminders = data['assignment_reminders']
+        if 'course_updates' in data:
+            preferences.course_updates = data['course_updates']
+        if 'achievement_alerts' in data:
+            preferences.achievement_alerts = data['achievement_alerts']
+            
+        # Update app preferences
+        if 'theme' in data:
+            preferences.theme = data['theme']
+        if 'language' in data:
+            preferences.language = data['language']
+        if 'timezone' in data:
+            preferences.timezone = data['timezone']
+        if 'dashboard_layout' in data:
+            preferences.dashboard_layout = data['dashboard_layout']
+            
+        preferences.save()
+        
+        return Response({
+            'status': 'success',
+            'message': 'Preferences updated successfully'
+        })
+        
+    except Student.DoesNotExist:
+        return Response({
+            'status': 'error',
+            'message': 'Student not found'
+        }, status=status.HTTP_404_NOT_FOUND)
+    except Exception as e:
+        return Response({
+            'status': 'error',
+            'message': str(e)
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

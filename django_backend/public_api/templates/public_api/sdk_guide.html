@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduyata Developer Guide</title>
+    <style>
+        :root {
+            --primary: #f97316;
+            --secondary: #000000;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #334155;
+            --code-bg: #1e293b;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background: var(--secondary);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .header p {
+            color: #94a3b8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: -30px auto 40px;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .key-box {
+            background: #fff7ed;
+            border: 1px solid #fdba74;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .key-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #c2410c;
+            font-weight: 700;
+        }
+
+        .key-value {
+            font-family: 'Courier New', monospace;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ea580c;
+            word-break: break-all;
+            margin-top: 0.5rem;
+            display: block;
+        }
+
+        h2 {
+            color: var(--secondary);
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        pre {
+            background: var(--code-bg);
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            background: #e2e8f0;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .badge-get {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .badge-post {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .footer {
+            text-align: center;
+            color: #64748b;
+            margin-top: 3rem;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Eduyata SDK</h1>
+        <p>Official Developer Documentation for {{ key.name }}</p>
+    </div>
+
+    <div class="container">
+        <!-- Introduction -->
+        <div class="card">
+            <h2>Welcome to Eduyata</h2>
+            <p>This secure bundle provides everything you need to integrate with the Eduyata Platform. It includes your
+                credentials configuration and a ready-to-run Starter Kit.</p>
+        </div>
+
+        <!-- System Status & Limits -->
+        <div class="card">
+            <h2>Your Access Profile</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                <div>
+                    <strong>Rate Limit:</strong>
+                    <span class="badge badge-get">{{ key.rate_limit_per_hour }} req/hr</span>
+                </div>
+                <div>
+                    <strong>Environment:</strong>
+                    <span class="badge badge-post">Production</span>
+                </div>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #64748b;">
+                Exceeding the rate limit will result in a <code>429 Too Many Requests</code> response.
+            </p>
+        </div>
+
+        <!-- Quick Start / Installation -->
+        <div class="card">
+            <h2>🚀 Quick Start</h2>
+            <p>This Developer Kit is built with standard <strong>HTML, CSS, and JavaScript</strong>. You can customize
+                it purely with frontend code.</p>
+
+            <p><strong>How to Run:</strong> Because of browser security (CORS), you cannot simply double-click
+                <code>index.html</code>. You must run a local server using <strong>one</strong> of the commands below:
+            </p>
+
+            <h3>Option A: Python (Recommended)</h3>
+            <pre><code># Run in this folder:
+python -m http.server 8000
+
+# Then open http://localhost:8000</code></pre>
+
+            <h3>Option B: Node.js</h3>
+            <pre><code># Run in this folder:
+npx serve
+
+# Then open the URL shown</code></pre>
+        </div>
+
+        <!-- Code Snippets -->
+        <div class="card">
+            <h2>Integration Snippets</h2>
+
+            <h3>Python (Requests)</h3>
+            <p><strong>Prerequisite:</strong> <code>pip install requests</code></p>
+            <pre><code>import requests
+
+API_KEY = "{{ key.key_value }}"
+BASE_URL = "http://localhost:8001/api/v1"
+
+headers = {
+    "Authorization": f"Bearer {API_KEY}",
+    "Content-Type": "application/json"
+}
+
+response = requests.get(f"{BASE_URL}/students/", headers=headers)
+print(response.json())</code></pre>
+
+            <h3>Node.js (Axios)</h3>
+            <p><strong>Prerequisite:</strong> <code>npm install axios</code></p>
+            <pre><code>const axios = require('axios');
+
+const config = {
+    headers: { Authorization: 'Bearer {{ key.key_value }}' }
+};
+
+axios.get('http://localhost:8001/api/v1/students/', config)
+    .then(res => console.log(res.data))
+    .catch(err => console.error(err));</code></pre>
+        </div>
+
+        <!-- Error Codes -->
+        <div class="card">
+            <h2>Error Codes Reference</h2>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+                <tr style="text-align: left; background: #f1f5f9;">
+                    <th style="padding: 0.75rem; border-bottom: 2px solid #e2e8f0;">Code</th>
+                    <th style="padding: 0.75rem; border-bottom: 2px solid #e2e8f0;">Meaning</th>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border-bottom: 1px solid #e2e8f0; font-family: monospace;">401</td>
+                    <td style="padding: 0.75rem; border-bottom: 1px solid #e2e8f0;">Unauthorized. Check your API Key.
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border-bottom: 1px solid #e2e8f0; font-family: monospace;">403</td>
+                    <td style="padding: 0.75rem; border-bottom: 1px solid #e2e8f0;">Forbidden. You do not have
+                        permission for this resource.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border-bottom: 1px solid #e2e8f0; font-family: monospace;">429</td>
+                    <td style="padding: 0.75rem; border-bottom: 1px solid #e2e8f0;">Too Many Requests. You exceeded {{
+                        key.rate_limit_per_hour }}/hr.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border-bottom: 1px solid #e2e8f0; font-family: monospace;">500</td>
+                    <td style="padding: 0.75rem; border-bottom: 1px solid #e2e8f0;">Server Error. Please contact
+                        support.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; {{ year }} Eduyata Inc. Securely Generated for {{ user.email }}</p>
+        <p><strong>Need Help?</strong> Email <a href="mailto:support@eduyata.com"
+                style="color: #64748b;">support@eduyata.com</a></p>
+    </div>
+</body>
+
+</html>

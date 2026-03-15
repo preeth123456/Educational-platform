@@ -1,0 +1,102 @@
+/* Animation for spinner */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 768px) {
+  .checkout-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .plans-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+  }
+}
+
+/* Payment method tabs hover effects */
+.payment-tab:hover {
+  background-color: #f3f4f6;
+}
+
+.payment-tab.active {
+  color: #8b5cf6;
+  border-bottom-color: #8b5cf6;
+}
+
+/* Plan card hover effects */
+.plan-card {
+  transition: all 0.3s ease;
+}
+
+.plan-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(139, 92, 246, 0.15);
+}
+
+/* Success/Error animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+  backdrop-filter: blur(4px);
+}
+
+/* Table hover effects */
+.transaction-row:hover {
+  background-color: #f9fafb;
+}
+
+/* Button loading state */
+.btn-loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* Status badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.status-badge.success {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status-badge.error {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.status-badge.pending {
+  background-color: #fef3c7;
+  color: #92400e;
+}

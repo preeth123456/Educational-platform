@@ -1,0 +1,225 @@
+.ai-popup-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+  }
+  
+  .ai-popup-card {
+    background: #fff;
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 32px rgba(80, 60, 180, 0.18);
+    padding: 1.5rem;
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    animation: ai-buddy-slide-in 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+  }
+  
+  @keyframes ai-buddy-slide-in {
+    from { transform: translateY(60px) scale(0.95); opacity: 0; }
+    to   { transform: translateY(0) scale(1); opacity: 1; }
+  }
+  
+  .ai-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+  }
+  
+  .ai-popup-header h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .ai-close {
+    background: #f3f3f7;
+    border: none;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.3rem;
+    color: #888;
+    cursor: pointer;
+  }
+  .ai-close:hover { background: #ece6ff; }
+  
+  .ai-popup-content {
+    text-align: center;
+  }
+  
+  .ai-avatar-3d {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  
+  .ai-speaking-avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  
+  .ai-avatar-face {
+    width: 90px;
+    height: 90px;
+    background: #f3f0fa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .ai-avatar-emoji {
+    font-size: 3rem;
+  }
+  
+  .ai-avatar-mouth {
+    position: absolute;
+    bottom: 18px;
+    width: 18px;
+    height: 8px;
+    background: #6c63ff;
+    border-radius: 0 0 12px 12px;
+    transform: scaleY(1);
+  }
+  .ai-avatar-mouth.open {
+    animation: ai-mouth-speak 0.3s infinite alternate;
+  }
+  
+  @keyframes ai-mouth-speak {
+    0% { transform: scaleY(1); }
+    100% { transform: scaleY(2); }
+  }
+  
+  .ai-avatar-soundwave {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    border: 2px solid #a084e8;
+    border-radius: 50%;
+    animation: ai-soundwave 1s infinite linear;
+  }
+  @keyframes ai-soundwave {
+    0% { opacity: 0.7; transform: scale(1); }
+    100% { opacity: 0; transform: scale(2); }
+  }
+  
+  .ai-suggestion {
+    background: #f3f0fa;
+    border-radius: 0.7rem;
+    padding: 0.7rem;
+    margin: 1rem 0;
+    font-size: 1rem;
+  }
+  
+  .ai-buttons {
+    display: flex;
+    gap: 0.7rem;
+    justify-content: center;
+  }
+  
+  .ai-btn {
+    padding: 0.6rem 1rem;
+    border-radius: 0.8rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .ai-btn.continue {
+    background: linear-gradient(90deg, #6c63ff, #a084e8);
+    color: #fff;
+  }
+  .ai-btn.alt {
+    background: #f3f3f7;
+    color: #6c63ff;
+  }
+  
+  .ai-floating-btn {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: linear-gradient(135deg, #a259ff, #6a82fb);
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    box-shadow: 0 4px 16px rgba(80, 0, 120, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  
+  .ai-chatbox {
+    height: 480px;
+    max-height: 90vh;
+  }
+  
+  .ai-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .ai-chat-message {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    max-width: 85%;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    line-height: 1.4;
+  }
+  .ai-chat-message.bot {
+    background: #f3f0fa;
+    text-align: left;
+  }
+  .ai-chat-message.user {
+    background: #dfe6fd;
+    text-align: right;
+    margin-left: auto;
+  }
+  
+  .ai-chat-input {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .ai-input {
+    flex: 1;
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  .ai-popup-title-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .ai-plan-btn {
+    background: none;
+    border: none;
+    font-size: 0.8rem;
+    color: #6c63ff;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 4px;
+    text-decoration: underline;
+  }
+  .ai-plan-btn:hover {
+    color: #4a3fd9;
+  }
+  

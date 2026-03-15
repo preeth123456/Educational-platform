@@ -1,0 +1,7 @@
+# Additional requirements for Data Retention & Right-to-Erasure
+celery==5.3.4
+redis==5.0.1
+pandas==2.1.4
+openpyxl==3.1.2
+
+# Add these to your existing requirements.txt

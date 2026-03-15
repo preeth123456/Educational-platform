@@ -1,0 +1,20 @@
+/* Teacher Sidebar Styles - Same as New Sidebar */
+.teacher-sidebar-container {
+  position: fixed !important;
+  top: 80px !important;
+  left: 0 !important;
+  z-index: 9999 !important;
+  background-color: #d8b4f8 !important;
+  border: none !important;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.1) !important;
+}
+
+/* Hide any other sidebars if needed */
+.dashboard-sidebar {
+  display: none !important;
+}
+
+/* Adjust main content if needed */
+.dashboard-main {
+  transition: margin-left 0.3s ease !important;
+}

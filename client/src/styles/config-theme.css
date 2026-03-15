@@ -1,0 +1,24 @@
+:root {
+  --primary-color: #1e40af;
+  --secondary-color: #6B7280;
+}
+
+/* Apply primary color to buttons */
+.btn-primary, .bg-blue-600, .bg-green-600 {
+  background-color: var(--primary-color) !important;
+}
+
+.btn-primary:hover, .bg-blue-600:hover, .bg-green-600:hover {
+  background-color: var(--primary-color) !important;
+  filter: brightness(0.9);
+}
+
+/* Apply to borders */
+.border-blue-500, .border-green-500 {
+  border-color: var(--primary-color) !important;
+}
+
+/* Apply to text colors */
+.text-blue-600, .text-green-600 {
+  color: var(--primary-color) !important;
+}

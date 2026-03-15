@@ -1,0 +1,170 @@
+.system-health-dashboard {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  padding: 0 2rem 2rem;
+}
+
+.dashboard-content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.metric-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.health-status-healthy {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.health-status-degraded {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+}
+
+.health-status-unhealthy {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+}
+
+.metric-progress {
+  width: 100%;
+  height: 8px;
+  background-color: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 0.75rem;
+}
+
+.metric-progress-bar {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.metric-progress-bar.healthy {
+  background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.metric-progress-bar.warning {
+  background: linear-gradient(90deg, #f59e0b, #d97706);
+}
+
+.metric-progress-bar.critical {
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+}
+
+.alert-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.alert-badge.critical {
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+
+.alert-badge.error {
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+
+.alert-badge.warning {
+  background-color: #fffbeb;
+  color: #d97706;
+}
+
+.alert-badge.info {
+  background-color: #eff6ff;
+  color: #2563eb;
+}
+
+.system-metric-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.system-metric-icon.cpu {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  color: white;
+}
+
+.system-metric-icon.memory {
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+  color: white;
+}
+
+.system-metric-icon.disk {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.system-metric-icon.database {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+}
+
+.refresh-button {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.refresh-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.refresh-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.tabs-container {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.tab-content {
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .system-health-dashboard {
+    padding: 0 1rem 1rem;
+  }
+  
+  .dashboard-content {
+    padding: 0;
+  }
+}

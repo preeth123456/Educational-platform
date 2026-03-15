@@ -1,0 +1,21 @@
+-- Create skill_endorsements table
+CREATE TABLE skill_endorsements (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    student_id INT NOT NULL,
+    endorser_id INT NOT NULL,
+    endorser_type ENUM('teacher', 'peer') NOT NULL,
+    skill_name VARCHAR(100) NOT NULL,
+    skill_category VARCHAR(50) NOT NULL,
+    level ENUM('beginner', 'intermediate', 'advanced') DEFAULT 'beginner',
+    evidence_type ENUM('assignment', 'quiz', 'project', 'participation') NULL,
+    evidence_id INT NULL,
+    evidence_score DECIMAL(5,2) NULL,
+    message TEXT NULL,
+    is_ai_suggested BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE,
+    INDEX idx_student_skill (student_id, skill_name),
+    INDEX idx_endorser (endorser_id, endorser_type),
+    INDEX idx_created_at (created_at)
+);

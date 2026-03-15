@@ -1,0 +1,74 @@
+Create a responsive landing page for an AI-powered education platform called **Eduyata** using **React.js with JavaScript** and **CSS** (no frameworks like Tailwind).
+
+🎯 Features of Eduyata:
+- AI Buddy Assistant for student help
+- Augmented Reality (AR) Learning
+- Gamified Assessments
+- Analytics Dashboard
+- Personalized Learning Paths
+
+🧩 Required Sections:
+
+1️⃣ **Header Component**:
+- Logo: Eduyata (left side)
+- Nav links: Home, Features, Modules (dropdown), Courses, Log in
+- Button: "Join for Free" (light purple background, white text)
+
+2️⃣ **Hero Section**:
+- Left: Text block
+  - Headline: "Revolutionize Learning with AI & AR"
+  - Subtext: "Eduyata combines AI, gamified assessments, and AR for smarter learning."
+  - Buttons: [ Get Started Free ] [ Try AI Buddy ]
+- Right: Image or illustration of students using AI or AR
+
+3️⃣ **Why Choose Eduyata Section**:
+- Grid of 6 features (2 rows x 3 columns)
+  - AI Buddy – “Your personal learning guide.”
+  - AR Learning – “Experience subjects in 3D.”
+  - Gamified Quizzes – “Fun and interactive challenges.”
+  - Personalized Learning – “Tailored to your pace.”
+  - Progress Analytics – “Track your success.”
+  - Learn Anywhere – “24/7 Cloud-based access.”
+
+4️⃣ **Popular Modules Section**:
+- 3 Cards with:
+  - Module title
+  - Short description
+  - Rating (stars)
+  - Price
+  - Image or icon
+  - Instructor name
+- Cards: “AI Buddy”, “Code Quest”, “AR Science Lab”
+
+5️⃣ **Testimonials Section**:
+- Carousel or simple layout
+- 2–3 students with:
+  - Profile photo
+  - Star rating
+  - Quote
+  - Name
+
+6️⃣ **Call to Action Section**:
+- Background color: Light purple
+- Large headline: “Ready to Learn Smarter?”
+- Subheadline: “Join 10,000+ students today.”
+- CTA Buttons: [ Get Started Free ] [ Schedule Demo ]
+
+7️⃣ **Footer Component**:
+- Sections: Quick Links, Support, Social Media Icons, Newsletter Subscribe box
+- Dark background with white text
+
+🎨 Design Requirements:
+- Use `App.css` for styling
+- Responsive layout using media queries
+- Use Google Fonts (like Poppins or Inter)
+- Use hover effects and transitions
+- Include smooth scroll or scroll reveal if possible
+- Icons: Use Font Awesome CDN
+
+🔧 Folder structure:
+- `components/` – Header.js, Hero.js, Features.js, Modules.js, Testimonials.js, Footer.js
+- `App.js` – Main layout with imported components
+- `App.css` – All page styles
+- `index.js` – Entry point
+

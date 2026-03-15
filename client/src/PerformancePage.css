@@ -1,0 +1,238 @@
+.performance-page {
+  display: flex;
+  background-color: #f9fafb; /* Matches dashboard bg */
+  min-height: 100vh;
+}
+
+.performance-content {
+  flex: 1;
+  padding: 40px;
+  margin-left: 250px;
+  transition: margin-left 0.3s ease;
+  padding-top: 56px;
+}
+
+.performance-content.collapsed {
+  margin-left: 70px;
+  padding-top: 56px;
+}
+
+.performance-content h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #111827;
+}
+
+.performance-content p {
+  margin-bottom: 30px;
+  color: #6b7280;
+}
+
+/* Summary Widgets */
+.performance-summary-widgets {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.widget {
+  flex: 1;
+  min-width: 250px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.widget:hover {
+  transform: scale(1.02);
+}
+
+.widget h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #111827;
+}
+
+.widget p {
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 8px;
+}
+
+.widget .progress-bar {
+  height: 10px;
+  background: #e5e7eb;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.widget .progress-fill {
+  height: 100%;
+  background: #6C63FF; /* Primary purple */
+  transition: width 0.6s ease-in-out;
+}
+
+/* Subject Cards */
+.subject-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.subject-card {
+  background: white;
+  border-left: 5px solid #6C63FF;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: 0.3s;
+}
+
+.subject-card:hover {
+  transform: translateY(-4px);
+}
+
+.subject-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subject-header h3 {
+  font-size: 18px;
+  color: #111827;
+}
+
+.subject-badge {
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.subject-badge.excellent {
+  background: #d1f2c4;
+  color: #1a472a;
+}
+.subject-badge.good {
+  background: #fff3cd;
+  color: #856404;
+}
+.subject-badge.average {
+  background: #ffeeba;
+  color: #6c4300;
+}
+.subject-badge.needs {
+  background: #f8d7da;
+  color: #842029;
+}
+
+.progress-bar {
+  height: 10px;
+  background: #e5e7eb;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 15px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #6C63FF;
+  transition: width 0.5s ease-in-out;
+}
+
+.score-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score {
+  font-weight: bold;
+  color: #6C63FF;
+  font-size: 18px;
+}
+
+.download-btn {
+  background: #6C63FF;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.download-btn:hover {
+  background: #5547c8;
+}
+
+/* Chart Section */
+.performance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+  margin-bottom: 2rem;
+}
+
+.chart-container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  height: 320px;
+}
+
+.chart-container h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #111827;
+}
+
+.chart-wrapper {
+  width: 100%;
+  height: 260px;
+}
+
+/* Responsive Fixes */
+@media (max-width: 768px) {
+  .performance-content {
+    margin-left: 70px;
+  }
+
+  .performance-summary-widgets {
+    flex-direction: column;
+  }
+
+  .performance-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .subject-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.performance-page .dashboard-header {
+  min-height: 56px;
+  height: 56px;
+}
+
+.performance-page .dashboard-header .header-search input {
+  height: 40px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.375rem;
+}

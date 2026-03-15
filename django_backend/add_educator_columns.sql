@@ -1,0 +1,14 @@
+-- Add missing columns to educators table
+ALTER TABLE educators ADD COLUMN date_of_birth DATE NULL;
+ALTER TABLE educators ADD COLUMN gender VARCHAR(10) DEFAULT '';
+ALTER TABLE educators ADD COLUMN highest_qualification VARCHAR(255) DEFAULT '';
+ALTER TABLE educators ADD COLUMN last_institute VARCHAR(255) DEFAULT '';
+ALTER TABLE educators ADD COLUMN bio TEXT DEFAULT '';
+ALTER TABLE educators ADD COLUMN boards JSON DEFAULT (JSON_ARRAY());
+ALTER TABLE educators ADD COLUMN subject_classes JSON DEFAULT (JSON_OBJECT());
+ALTER TABLE educators ADD COLUMN languages_known JSON DEFAULT (JSON_ARRAY());
+ALTER TABLE educators ADD COLUMN cv_file VARCHAR(500) DEFAULT '';
+ALTER TABLE educators ADD COLUMN achievements_file VARCHAR(500) DEFAULT '';
+ALTER TABLE educators ADD COLUMN experience_proof_file VARCHAR(500) DEFAULT '';
+ALTER TABLE educators ADD COLUMN is_active BOOLEAN DEFAULT TRUE;
+ALTER TABLE educators ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
